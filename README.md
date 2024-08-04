@@ -18,6 +18,10 @@ In this game, players are presented with a list of numbers in English and their 
 
 3. **Objective:**
    - Match all the numbers correctly to complete the game!
+  
+   ## Screenshots
+
+![App Screenshot](https://github.com/tanishq507/)
 
 ## Features
 
