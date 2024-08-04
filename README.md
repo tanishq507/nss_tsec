@@ -21,7 +21,7 @@ In this game, players are presented with a list of numbers in English and their 
   
    ## Screenshots
 
-![App Screenshot](https://github.com/tanishq507/)
+![App Screenshot](https://github.com/tanishq507/nss_tsec/ss.png)
 
 ## Features
 
