@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:game/try.dart';
+import 'package:game/utils/colors.dart';
+import 'package:game/view/home_page.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.landscapeLeft]);
+//
+// Created by CodeWithFlexZ
+// Tutorials on my YouTube
+//
+//! Instagram
+//! @CodeWithFlexZ
+//
+//? GitHub
+//? AmirBayat0
+//
+//* YouTube
+//* Programming with FlexZ
+//
+
+void main() {
   runApp(const MyApp());
 }
 
@@ -15,99 +26,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Intro Screen',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: TryView(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _indexOfDroppedItem = 0;
-
-  void _acceptDraggedItem(int index) {
-    setState(() {
-      _indexOfDroppedItem = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: GridView.count(
-          shrinkWrap: true,
-          primary: false,
-          crossAxisCount: 2,
-          children: List.generate(6, (index) {
-            return Padding(
-              padding: const EdgeInsets.all(44.0),
-              child: index == _indexOfDroppedItem
-                  ? Draggable<int>(
-                      data: index,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.blue,
-                            border: Border.all(
-                              color: Colors.blue,
-                            ),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10))),
-                      ),
-                      childWhenDragging: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.blue,
-                            ),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20))),
-                      ),
-                      feedback: Container(
-                        width: 100,
-                        height: 100,
-                        decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                      ),
-                    )
-                  : DragTarget<int>(
-                      builder: (
-                        BuildContext context,
-                        List<dynamic> accepted,
-                        List<dynamic> rejected,
-                      ) {
-                        return Container(
-                            decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.blue,
-                          ),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(20)),
-                        ));
-                      },
-                      onAccept: (int data) {
-                        _acceptDraggedItem(index);
-                      },
-                    ),
-            );
-          }),
+          textTheme: const TextTheme(
+        displayLarge: TextStyle(
+          fontSize: 30,
+          color: MyColors.titleTextColor,
+          fontWeight: FontWeight.bold,
         ),
-      ),
+        displayMedium: TextStyle(
+            fontSize: 18,
+            color: MyColors.subTitleTextColor,
+            fontWeight: FontWeight.w400,
+            wordSpacing: 1.2,
+            height: 1.2),
+        displaySmall: TextStyle(
+          fontSize: 18,
+          color: MyColors.titleTextColor,
+          fontWeight: FontWeight.bold,
+        ),
+        headlineMedium: TextStyle(
+          fontSize: 18,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      )),
+      home: const HomePage(),
     );
   }
 }
